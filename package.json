@@ -4,7 +4,7 @@
   "description": "Minority Game Backend",
   "main": "server.js",
   "scripts": {
-    "start": "node backend/server.js",
+    "start": "node server.js",
     "server": "nodemon server.js",
     "client": "npm start --prefix frontend",
     "dev": "nodemon server.js",
