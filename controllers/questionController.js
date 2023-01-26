@@ -5,6 +5,7 @@ const Question = require('../models/questionModel')
 // @route   POST /api/question
 // @access  Public
 const createQuestion = asyncHandler(async (req, res) => {
+  console.log(req.originalUrl)
   const { question, option0, option1, salt, duration } = req.body
 
   if (
@@ -51,6 +52,7 @@ const createQuestion = asyncHandler(async (req, res) => {
 // @route   PUT /api/question/
 // @access  Public
 const updateQuestionResult = asyncHandler(async (req, res) => {
+  console.log(req.originalUrl)
   const { qid, result } = req.body
 
   let question = await Question.findOne({ qid })
@@ -74,6 +76,7 @@ const updateQuestionResult = asyncHandler(async (req, res) => {
 // @route   GET /api/question
 // @access  Public
 const getAllQuestions = asyncHandler(async (req, res) => {
+  console.log(req.originalUrl)
   const allQuestions = await Question.find()
 
   // Return results
@@ -84,6 +87,7 @@ const getAllQuestions = asyncHandler(async (req, res) => {
 // @route   GET /api/question/:qid
 // @access  Public
 const getQuestionByQid = asyncHandler(async (req, res) => {
+  console.log(req.originalUrl)
   const question = await Question.findOne({ qid: req.params.qid })
   if (!question) {
     res.status(400)
@@ -103,6 +107,7 @@ module.exports = {
 // @route   GET /api/question/largestqid
 // @access  Public
 const getLargestQid = asyncHandler(async (req, res) => {
+  console.log(req.originalUrl)
   const question = await Question.find().sort({ qid: -1 }).limit(1)
 
   if (!question) {
@@ -120,6 +125,7 @@ const getLargestQid = asyncHandler(async (req, res) => {
 // @route   GET /api/question/page
 // @access  Public
 const getHistoryPagesQuestions = asyncHandler(async (req, res) => {
+  console.log(req.originalUrl)
   // const { page, currQid } = req.body
   //
   // // Get the current page from the query string

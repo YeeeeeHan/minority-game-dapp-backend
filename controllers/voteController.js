@@ -5,6 +5,8 @@ const Vote = require('../models/voteModel')
 // @route   POST /api/vote
 // @access  Public
 const createVote = asyncHandler(async (req, res) => {
+  console.log(req.originalUrl)
+
   const { qid, address, option, unix, salt } = req.body
 
   if (
@@ -48,6 +50,8 @@ const createVote = asyncHandler(async (req, res) => {
 // @route   GET /api/vote/:qid
 // @access  Public
 const getVoteByQid = asyncHandler(async (req, res) => {
+  console.log(req.originalUrl)
+
   const votes = await Vote.find({ qid: req.params.qid })
   if (!votes) {
     res.status(400)
